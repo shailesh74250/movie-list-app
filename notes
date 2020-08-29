@@ -1,0 +1,55 @@
+Movie list application in react that retrieves data from a local JSON file and runs
+in the browser with webpack and babel. styling will be done using bootstrap.
+the application that you'll build will return a list of the highest-grossing movies 
+as of 2019, along with some more details and a poster for every movie.
+
+steps of setting react app from scratch
+1. step is npm init -y
+2. second is install and configuring webpack
+3. install webpack and webpack cli using npm install --save-dev webpack webpack-cli
+4. the next step is to include these packages inside the package.json file and 
+have them run in our start and build scripts. to do this add the start and build scripts to our
+package.json file. 
+the preceding configuration will add start and build scripts to our application using
+webpack. as you see, npm start will run webpack in development mode and npm build will run webpack in 
+production mode. the biggest difference is that running webpack in production mode will minimize our code to 
+decrease the size of the project bundle.
+
+5. Create a new directory inside our project called src and create a new file inside this directory called index.js. Later on, we'll configure webpack so that this file is the starting point for our application. Place the following line of code inside this newly created file:
+console.log("movie list")
+
+6. If we now run the npm start or npm build command at our command line, webpack will start up and create a new directory called dist. Inside this directory, there will be a file called main.js that includes our project code. Depending on whether we've run webpack in development or production mode, the code will be minimized in this file. You can check whether your code is working by running the following command\\
+
+7. node dist/main.js
+8. This command runs the bundled version of our application and should return the movieList string as output in the command line. Now, we're able to run JavaScript code from the command line. In the next part of this section, we will learn how to configure webpack so that it works with React
+
+9. configure react app work with react 
+Now that we have set up a basic development environment with webpack for a javascript application.
+we can start installing the packages we need in order to run any react application. 
+these are react and react-dom, where the former is the generic core package for react and the
+latter provides an entry point to the browser's DOM and renders React. 
+npm install react react-dom
+10. merely installing the dependencies for react is not sufficient to run it since.
+by default, not every browser can read the format (such as es2015+ or react) that your javascript
+code is written in. therefore, we need to compile the javascript code into a readble format for every browser.
+
+for this, we'll use babel and its related pakages, which can be installed as devDependencies by running the following command
+npm install --save-dev @bebel/core @babel/preset-env @babel/preset-react babel-loader
+
+
+Next to the Babel core, we'll also install babel-loader, which is a helper so that Babel can run with webpack and two preset packages. These preset packages help determine which plugins will be used to compile our JavaScript code into a readable format for the browser (@babel/preset-env) and to compile React-specific code (@babel/preset-react).
+
+With the packages for React and the correct compilers installed, the next step is to make them work with webpack so that they are used when we run our application.
+
+The configuration in this file tells webpack to use babel-loader for every file that has the .js extension and excludes .js files in the node_modules directory for the Babel compiler. The actual settings for babel-loader are placed in a separate file, called .babelrc.
+
+The configuration in this file tells webpack to use babel-loader for every file that has the .js extension and excludes .js files in the node_modules directory for the Babel compiler. The actual settings for babel-loader are placed in a separate file, called .babelrc.
+
+We can also create the .babelrc file in the project's root directory and place the following code inside it, which configures babel-loader to use the @babel/preset-env and @babel/preset-react presets when it's compiling our code:
+
+We can also declare the configuration for babel-loader directly inside the webpack.config.js file, but for better readability, we should place it in a separate .babelrc file. Also, the configuration for Babel can now be used by other tools that are unrelated to webpack.
+
+The @babel/preset-env preset has options defined in it that make sure that the compiler uses the latest version of Node.js, so polyfills for features such as async/await will still be available. Now that we've set up webpack and Babel, we can run JavaScript and React from the command line. In the next part of this section, we'll create our first React code and make it run in the browser.
+
+Rendering a React project
+Now that we've set up React so that it works with Babel and webpack, we need to create an actual React component that can be compiled and run. Creating a new React project involves adding some new files to the project and making changes to the setup for webpack. Let's get started:
